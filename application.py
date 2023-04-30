@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def get():
-    return "Pod is runninhg..."
+    return "Pod is running..."
 
 @app.route('/v1/predict', methods = ['POST'])
 def predict():
