@@ -1,6 +1,6 @@
 from flask import Flask, request
-# import requests
-# import predict_song_emotion
+import requests
+import predict_song_emotion
 
 app = Flask(__name__)
 
