@@ -1,4 +1,5 @@
 Flask==2.2.3
+gunicorn==20.1.0
 # keras==2.10.0
 # tensorflow==2.10.0
 # librosa==0.10.0
