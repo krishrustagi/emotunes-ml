@@ -26,8 +26,7 @@ def speedNpitch(data):
 '''
 2. Extracting the MFCC feature as an image (Matrix format).  
 '''
-def prepare_data(df, n, aug, mfcc):
-    print(df.shape[0])
+def prepare_data(df, n, aug):
     X = np.empty(shape=(df.shape[0], n, 216, 1))
     input_length = sampling_rate * audio_duration
     
@@ -57,20 +56,11 @@ def prepare_data(df, n, aug, mfcc):
         if aug == 1:
             data = speedNpitch(data)
         
-        # which feature?
-        if mfcc == 1:
-            # MFCC extraction 
-            MFCC = librosa.feature.mfcc(y=data, sr=sampling_rate, n_mfcc=n_mfcc)
-            MFCC = np.expand_dims(MFCC, axis=-1)
-            X[cnt,] = MFCC
-            
-        else:
-            # Log-melspectogram
-            melspec = librosa.feature.melspectrogram(data, n_mels = n_melspec)   
-            logspec = librosa.amplitude_to_db(melspec)
-            logspec = np.expand_dims(logspec, axis=-1)
-            X[cnt,] = logspec
-            
+        # MFCC extraction 
+        MFCC = librosa.feature.mfcc(y=data, sr=sampling_rate, n_mfcc=n_mfcc)
+        MFCC = np.expand_dims(MFCC, axis=-1)
+        X[cnt,] = MFCC
+        
         cnt += 1
     
     return X

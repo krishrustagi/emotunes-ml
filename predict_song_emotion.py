@@ -17,9 +17,8 @@ def get_feature_from_song_url (song_url):
 
     n = 30
     aug = 0
-    mfcc = 1
 
-    X = prepare_data(df, n, aug, mfcc)
+    X = prepare_data(df, n, aug)
     return X
 
 def predict_emotion(model_weights, feature):
