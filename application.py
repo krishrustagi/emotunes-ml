@@ -10,8 +10,9 @@ def get():
 
 @app.route('/v1/predict', methods = ['POST'])
 def predict():
-    song_url = request.form['song_url']
-    model_weights_url = request.form['model_weights_url']
+    data = request.get_json()
+    song_url = data['song_url']
+    model_weights_url = data['model_weights_url']
     song_response = requests.get(song_url)
     model_weights_response = requests.get(model_weights_url)
 
