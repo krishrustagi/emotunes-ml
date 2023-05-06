@@ -1,7 +1,7 @@
 from sklearn.preprocessing import LabelEncoder
 from keras.models import model_from_json
 from keras.optimizers import Adam
-from utils import prepare_data
+import utils
 
 import numpy as np
 import pandas as pd
@@ -18,7 +18,7 @@ def get_feature_from_song_url (song_url):
     n = 30
     aug = 0
 
-    X = prepare_data(df, n, aug)
+    X = utils.prepare_data(df, n, aug)
     return X
 
 def predict_emotion(model_weights, feature):
